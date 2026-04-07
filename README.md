@@ -1,102 +1,64 @@
 # 🧠 ML Learning Journey (PyTorch • Colab • From Scratch)
 
-> A hands-on Machine Learning repository focused on **learning by building models from scratch** using PyTorch and Google Colab.
-
-
-
+> A hands-on ML repository focused on **building models from scratch** using PyTorch and Google Colab.
 
 ---
 
 ## 🚀 Overview
 
-This repository documents my journey of learning Machine Learning through **practical implementation and experimentation**.
-
-Instead of relying only on high-level APIs, I focus on:
-
-* understanding how models work internally
-* building training loops from scratch
-* debugging real-world errors
-* developing strong ML intuition
-
+Instead of relying on high-level APIs, I focus on understanding models internally, building training loops from scratch, and developing strong ML intuition through experimentation.
 
 ---
 
 ## 📘 Topics Covered
 
-### 🔹 Binary Classification
-
-* logits vs probabilities
-* sigmoid function
-* BCEWithLogitsLoss
-
-### 🔹 Multiclass Classification
-
-* softmax intuition
-* CrossEntropyLoss
-* class predictions using argmax
-
-### 🔹 Neural Networks
-
-* Linear layers
-* Activation functions (ReLU)
-* Model architecture design
-
-### 🔹 Training Pipeline
-
-* forward pass
-* loss computation
-* backpropagation
-* optimizer step
-
-### 🔹 Evaluation Metrics
-
-* Accuracy
-* Precision
-* Recall
-* F1-score
-* Custom metric implementation
+| Area | Key Concepts |
+|---|---|
+| Binary Classification | Sigmoid, BCEWithLogitsLoss, logits vs probabilities |
+| Multiclass Classification | Softmax, CrossEntropyLoss, argmax predictions |
+| Neural Networks | Linear layers, ReLU, architecture design |
+| Training Pipeline | Forward pass, backprop, optimizer step |
+| Evaluation Metrics | Accuracy, Precision, Recall, F1-score |
+| Computer Vision (CNNs) | Conv2d, MaxPool2d, TinyVGG, FashionMNIST |
+| Model Persistence | `state_dict()` save & load, `.pth` files |
 
 ---
 
-## 🧪 Example Training Workflow
+## 🖼️ FashionMNIST — Computer Vision
+
+Trained and compared **3 architectures** on FashionMNIST, from a linear baseline to a full CNN.
+
+| Model | Loss | Accuracy | Time |
+|---|---|---|---|
+| V0 — Baseline Linear | 0.4798 | 83.41% | 28.68s |
+| V1 — Linear + ReLU | 0.6850 | 75.02% | 31.95s |
+| **V2 — TinyVGG CNN** ✅ | **0.3273** | **88.34%** | 37.24s |
+
+> 💡 The CNN outperforms both linear models — convolutional layers are far better suited for image data.
+
+
+#### 🔀 Confusion Matrix
+<img width="662" height="650" alt="image" src="https://github.com/user-attachments/assets/11e04752-5262-460a-95f6-3e0854ddd48c" />
+
 
 ```python
-# Forward pass
-logits = model(X_train)
-
-# Loss (multiclass)
-loss_fn = torch.nn.CrossEntropyLoss()
-loss = loss_fn(logits, y_train)
-
-# Backpropagation
-optimizer.zero_grad()
-loss.backward()
-optimizer.step()
+confmat = ConfusionMatrix(num_classes=len(class_name), task="multiclass")
+confmat_tensor = confmat(preds=y_pred_tensor, target=test_data.targets)
+fig, ax = plot_confusion_matrix(conf_mat=confmat_tensor.numpy(), class_names=class_name)
 ```
 
----
+#### 💾 Model Saving & Loading
+```python
+# Save
+torch.save(obj=model_2.state_dict(), f="models/03_pytorch_computer_vision_model_2.pth")
 
-## 🚀 Featured Project
+# Load
+loaded_model_2 = FashionMNISTModelV2(input_shape=1, hidden_units=10, output_shape=10)
+loaded_model_2.load_state_dict(torch.load(f=MODEL_SAVE_PATH))
+loaded_model_2 = loaded_model_2.to(device)
+```
 
-### 🔹 Classification on Moons Dataset
-
-* Built a neural network from scratch using PyTorch
-* Implemented full training loop manually
-* Visualized decision boundaries
-* Experimented with different architectures and hyperparameters
-
-
----
-
-## ⚠️ Debugging & Learnings
-
-Common issues I explored and solved:
-
-* Shape mismatch in loss functions
-* Incorrect use of softmax with CrossEntropyLoss
-* Difference between logits and probabilities
-* Device mismatch (CPU vs CUDA)
-* Binary vs multiclass loss confusion
+> Saving `state_dict()` only keeps the learned weights — more portable than saving the full model object.
 
 ---
 
@@ -104,38 +66,14 @@ Common issues I explored and solved:
 
 * [x] Binary Classification
 * [x] Multiclass Classification
-* [x] Custom Metrics Implementation
-* [ ] Computer Vision (CNNs)
+* [x] Custom Metrics
+* [x] Computer Vision (CNNs) — FashionMNIST
+* [x] Model Saving & Loading
+* [ ] Transfer Learning
 * [ ] Model Deployment
-
----
-
-## 🔜 Coming Soon
-
-* 🖼️ Computer Vision (CNNs)
-* 📷 Image classification projects
-* 📈 Training visualizations (loss & accuracy curves)
-* 🚀 More advanced architectures
 
 ---
 
 ## 🛠️ Tech Stack
 
-* Python 🐍
-* PyTorch 🔥
-* NumPy
-* Matplotlib
-* Pandas
-* Scikit-learn
-
----
-
-## 💡 Goal
-
-To build a strong foundation in Machine Learning and Deep Learning by:
-
-* understanding concepts from first principles
-* implementing models manually
-* practicing consistently through experiments
-
----
+Python • PyTorch • NumPy • Matplotlib • Scikit-learn • torchmetrics • mlxtend • Google Colab
