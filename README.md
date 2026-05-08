@@ -66,8 +66,8 @@ loaded_model_2 = loaded_model_2.to(device)
 
 * [x] Binary Classification
 * [x] Multiclass Classification
-* [x] Custom Metrics
-* [x] Computer Vision (CNNs) — FashionMNIST
+* [x] Computer Vision (CNNs)
+* [x] Custom DataLoader
 * [x] Model Saving & Loading
 * [ ] Transfer Learning
 * [ ] Model Deployment
