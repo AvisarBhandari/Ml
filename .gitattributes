@@ -1,0 +1,2 @@
+Custom[[:space:]]data/data/fried_rice_chicken_curry_dumplings_donuts100_percent.zip filter=lfs diff=lfs merge=lfs -text
+.zip filter=lfs diff=lfs merge=lfs -text

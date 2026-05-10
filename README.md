@@ -32,7 +32,7 @@ Trained and compared **3 architectures** on FashionMNIST, from a linear baseline
 |---|---|---|---|
 | V0 — Baseline Linear | 0.4798 | 83.41% | 28.68s |
 | V1 — Linear + ReLU | 0.6850 | 75.02% | 31.95s |
-| **V2 — TinyVGG CNN** ✅ | **0.3273** | **88.34%** | 37.24s |
+| **V2 — TinyVGG CNN**  | **0.3273** | **88.34%** | 37.24s |
 
 > 💡 The CNN outperforms both linear models — convolutional layers are far better suited for image data.
 
@@ -66,8 +66,8 @@ loaded_model_2 = loaded_model_2.to(device)
 
 * [x] Binary Classification
 * [x] Multiclass Classification
-* [x] Custom Metrics
-* [x] Computer Vision (CNNs) — FashionMNIST
+* [x] Computer Vision (CNNs)
+* [x] Custom DataLoader
 * [x] Model Saving & Loading
 * [ ] Transfer Learning
 * [ ] Model Deployment
