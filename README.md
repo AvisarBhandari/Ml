@@ -61,6 +61,33 @@ loaded_model_2 = loaded_model_2.to(device)
 > Saving `state_dict()` only keeps the learned weights — more portable than saving the full model object.
 
 ---
+#### 🛠️ Architecture Comparison: Custom TinyVGG vs. ResNet-18
+This comparison evaluates a Custom TinyVGG (trained from scratch) against a ResNet-18 utilizing Transfer Learning.
+
+* ResNet-18 (Transfer Learning): By leveraging pre-trained ImageNet weights and training only the custom classifier head, this model achieved rapid convergence and a superior accuracy of ~65%. The visible spikes in test metrics suggest some sensitivity to specific validation samples, likely due to the frozen backbone's fixed feature set.
+* Custom TinyVGG (Baseline): A lightweight architecture (20 hidden units, BatchNorm, and Dropout) trained from scratch. Despite using Label Smoothing (0.1) and a StepLR scheduler to improve generalization, it struggled to compete with the pre-trained features, peaking at ~50% accuracy.
+
+# Tuning & Regularization Insights
+| FeatureCustom | TinyVGG | ResNet-18 (Transfer)|
+|--|--|--|
+| Strategy | From Scratch | Frozen Backbone + New Head |
+| Regularization | BatchNorm, Dropout (0.5), Weight Decay, Label Smoothing | Pre-trained Weights, Dropout (0.3) |
+| Optimization | Adam + StepLR | SchedulerAdam |
+
+Conclusion: Transfer Learning via ResNet-18 provided a significantly higher performance ceiling and faster convergence compared to the custom scratch-built architecture.
+  
+<img width="1222" height="855" alt="Untitled" src="https://github.com/user-attachments/assets/8459a602-052a-4273-ae9a-c335c1d183d6" />
+
+## 🛠️ Model Tuning
+I evaluated two fine-tuning strategies to optimize performance:
+* Frozen EfficientNet: Acted as a fixed feature extractor, maintaining a stable ~90% accuracy and low loss.
+* Unfreeze Last Block: Fine-tuned only the final convolutional block. It showed a steady learning curve, climbing from ~40% to ~70% accuracy by epoch 10.
+
+**Observation:** The frozen backbone offers immediate stability, while unfreezing the last block demonstrates a clear trajectory for specialized learning with more epochs.
+
+<img width="1601" height="855" alt="Untitled" src="https://github.com/user-attachments/assets/da953236-f546-444c-bdf7-5c56fe899be9" />
+
+---
 
 ## 📌 Progress Tracker
 
@@ -69,8 +96,8 @@ loaded_model_2 = loaded_model_2.to(device)
 * [x] Computer Vision (CNNs)
 * [x] Custom DataLoader
 * [x] Model Saving & Loading
-* [ ] Transfer Learning
-* [ ] Model Deployment
+* [x] Transfer Learning
+* [x] Model Deployment
 
 ---
 
