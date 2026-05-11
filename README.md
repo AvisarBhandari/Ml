@@ -69,7 +69,7 @@ loaded_model_2 = loaded_model_2.to(device)
 * [x] Computer Vision (CNNs)
 * [x] Custom DataLoader
 * [x] Model Saving & Loading
-* [ ] Transfer Learning
+* [x] Transfer Learning
 * [ ] Model Deployment
 
 ---
