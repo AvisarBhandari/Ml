@@ -102,11 +102,7 @@ I evaluated two fine-tuning strategies to optimize performance:
 * [x] Custom DataLoader
 * [x] Model Saving & Loading
 * [x] Transfer Learning
-<<<<<<< HEAD
-* [ ] Model Deployment
-=======
 * [x] Model Deployment
->>>>>>> 239cc8e77c839156264ad2a1a53b21186c71a179
 
 ---
 
