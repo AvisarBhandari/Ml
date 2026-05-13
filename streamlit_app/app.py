@@ -56,7 +56,7 @@ with col1:
                     image=upload_image, model=get_model().to(device), device=device
                 )
     else:
-        example_dir = Path("images.jpg")
+        example_dir = Path("streamlit_app/images.jpg")
         if example_dir.is_file():
             st.write("Example Image:")
             st.write(Image.open(example_dir))
