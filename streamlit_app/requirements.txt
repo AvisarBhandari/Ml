@@ -1,7 +1,6 @@
 streamlit
 torch==2.11.0
 torchvision==0.22.0
-timm
 pillow
 numpy
 matplotlib
