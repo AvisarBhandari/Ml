@@ -13,5 +13,5 @@ def get_model():
         nn.Dropout(p=0.3),
         nn.Linear(in_features=1280, out_features=len(class_names))
     )
-    model_0.load_state_dict(torch.load("streamlit_app/best_model_0.pth"))
+    model_0.load_state_dict(torch.load("best_model_0.pth"))
     return model_0
