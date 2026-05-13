@@ -57,7 +57,7 @@ with col1:
                 )
     else:
         example_dir = Path("images.jpg")
-        if example_dir.is_file:
+        if example_dir.is_file():
             st.write("Example Image:")
             st.write(Image.open(example_dir))
             with col2:
