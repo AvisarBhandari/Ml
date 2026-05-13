@@ -93,6 +93,22 @@ I evaluated two fine-tuning strategies to optimize performance:
 > **Observation:** The frozen backbone offers immediate stability, while unfreezing the last block demonstrates a clear trajectory for specialized learning with more epochs.
 
 ---
+## 🌐 Deployed App
+
+The project is deployed using Streamlit Cloud.
+
+🔗 **Live Demo:** https://avisarbhandari-ml-streamlit-appapp-t6fepq.streamlit.app/
+
+### What the app can do
+- Upload an image of food
+- Predict the food category using a CNN model
+- Display top predictions with confidence scores
+
+### Tech Stack
+- PyTorch
+- Torchvision
+- Streamlit
+- EfficientNet Transfer Learning
 
 ## 📌 Progress Tracker
 
