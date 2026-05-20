@@ -1,4 +1,4 @@
-# 🧠 ML Learning Journey (PyTorch • Colab • From Scratch)
+# 🧠 ML (PyTorch • Colab • From Scratch)
 
 > A hands-on ML repository focused on **building models from scratch** using PyTorch and Google Colab.
 
