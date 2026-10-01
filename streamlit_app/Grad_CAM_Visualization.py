@@ -41,7 +41,7 @@ def generate_gradcam(model, image_path, device):
 
 
     # generate heatmap
-    grayscale_cam = cam(input_tensor=input_tensor)[0]
+    grayscale_cam = cam(input_tensor=input_tensor, targets=targets)[0]
 
     # resize heatmap
     grayscale_cam = cv2.resize(grayscale_cam, (rgb_img.shape[1], rgb_img.shape[0]))
