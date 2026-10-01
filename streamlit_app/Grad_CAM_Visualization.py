@@ -6,6 +6,7 @@ from PIL import Image
 from torchvision.models import EfficientNet_B0_Weights
 from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.image import show_cam_on_image
+from pytorch_grad_cam.utils.model_targets import ClassificationTarget
 
 
 def process_image(image_path, device):
@@ -37,6 +38,8 @@ def generate_gradcam(model, image_path, device):
     target_layers = [model.features[-2]]
 
     cam = GradCAM(model=model, target_layers=target_layers)
+    targets = [ClassificationTarget(0)]  # Assuming class index 0 for demonstration
+
 
     # generate heatmap
     grayscale_cam = cam(input_tensor=input_tensor)[0]
